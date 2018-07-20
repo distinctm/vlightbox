@@ -51,25 +51,31 @@ Other options are;
 Remove all styles to the image gallery, overlay not included
 - Default: false
 ```js
-:resetstyles="false" 
+:resetstyles="false"
+```
+
+Add classes to the image gallery elements (great for utilities like Tailwind CSS)
+- Default: null
+```js
+:classes="{ul:'', li: '', img: '', overlay: ''}"
 ```
 
 Add h1 with title above gallery
 - Default: null
 ```js
-title="Demo Gallery" 
+title="Demo Gallery"
 ```
 
 Loop back to the first image when at the end of the gallery
 - Default: true
 ```js
-:loop="true" 
+:loop="true"
 ```
 
 Show next, back and close buttons on overlay
 - Default: true
 ```js
-:nav="true" 
+:nav="true"
 ```
 
 Show captions on images with the caption property
