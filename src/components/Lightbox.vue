@@ -1,12 +1,12 @@
 <template>
   <div :class="{ 'vue-lightbox' : !resetstyles }">
     <h1 v-if="title">{{ title }}</h1>
-    <ul>
-      <li v-for="(image, index) in images">
-          <img :src="image.src" :alt="image.caption" @click="clickImage(index)">
-      </li>       
+    <ul :class="classes.ul">
+      <li v-for="(image, index) in images" :class="classes.li">
+          <img :src="image.src" :alt="image.caption" @click="clickImage(index)" :class="classes.img">
+      </li>
      </ul>
-     <div class="lightbox-overlay" v-if="overlayActive" @click.self="closeOverlay">
+     <div class="lightbox-overlay" :class="classes.overlay" v-if="overlayActive" @click.self="closeOverlay">
       <div class="holder">
         <img :src="images[currentImage].src"/>
         <div class="nav" v-if="nav">
@@ -27,6 +27,24 @@ export default {
     resetstyles: {
       default: false,
       type: Boolean,
+    },
+    classes: {
+        ul: {
+            default: '',
+            type: String,
+        },
+        li: {
+            default: '',
+            type: String,
+        },
+        img: {
+            default: '',
+            type: String,
+        },
+        overlay: {
+            default: '',
+            type: String,
+        }
     },
     title: {
       type: String,
@@ -105,13 +123,13 @@ export default {
 	display: block;
 	max-width: 780px;
 	text-align: center;
-	
+
 	li {
 		display: inline-block;
 		padding: 5px;
 		background: ghostwhite;
 		margin: 10px;
-	
+
         img {
             display: block;
             width: 200px;
@@ -129,13 +147,13 @@ export default {
 	text-align: center;
 	padding: 20px;
     box-sizing: border-box;
-	
+
 	.holder {
 		max-width: 600px;
 		margin: 0 auto;
 		position: relative;
         max-height: 100vh;
-		
+
 		img {
 			width: 100%;
 			max-width: 600px;
@@ -144,7 +162,7 @@ export default {
 			display: block;
             max-height: 100vh;
 		}
-			
+
 		p {
 			color: #ffffff;
 			margin: 0;
@@ -164,14 +182,14 @@ export default {
 			a {
 				color: white;
 				opacity: 0.3;
-				-webkit-user-select: none;    
+				-webkit-user-select: none;
 				cursor: pointer;
 
 				&:hover {
 					opacity: 1;
 				}
 			}
-			
+
 			.next, .prev {
 				position: absolute;
 				top: 0;
@@ -206,7 +224,7 @@ export default {
 				position: absolute;
 				text-align: left;
 				box-sizing: border-box;
-				
+
 				&:hover {
 					opacity: 1;
 				}
